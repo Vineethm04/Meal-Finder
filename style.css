@@ -127,3 +127,22 @@ nav {
 
     letter-spacing: 1px;
 }
+/* =========================
+   CATEGORIES SECTION
+========================= */
+
+.categories-section {
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.categories-section h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+#categories-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
