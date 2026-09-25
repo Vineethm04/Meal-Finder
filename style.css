@@ -45,6 +45,8 @@ nav {
 
     cursor: pointer;
 }
+
+
 /* =========================
    HERO SECTION
 ========================= */
@@ -127,6 +129,8 @@ nav {
 
     letter-spacing: 1px;
 }
+
+
 /* =========================
    CATEGORIES SECTION
 ========================= */
@@ -146,6 +150,8 @@ nav {
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
 }
+
+
 /* =========================
    CATEGORY CARDS
 ========================= */
@@ -167,6 +173,7 @@ nav {
 
     color: #333;
 }
+
 #categories-container img {
     width: 100%;
 
@@ -174,26 +181,8 @@ nav {
 
     margin-bottom: 15px;
 }
-/* =========================
-   RESPONSIVE CATEGORIES
-========================= */
-
-@media (max-width: 768px) {
-
-    #categories-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
 
 
-@media (max-width: 480px) {
-
-    #categories-container {
-        grid-template-columns: 1fr;
-    }
-
-}
 /* =========================
    MEALS SECTION
 ========================= */
@@ -241,4 +230,34 @@ nav {
     color: #333;
 
     padding: 15px;
+}
+
+
+/* =========================
+   RESPONSIVE CATEGORIES
+========================= */
+
+@media (max-width: 768px) {
+
+    #categories-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #meals-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    #categories-container {
+        grid-template-columns: 1fr;
+    }
+
+    #meals-container {
+        grid-template-columns: 1fr;
+    }
+
 }

@@ -27,18 +27,22 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
 
                         mealsContainer.innerHTML = "";
 
-                        data.meals.forEach(meal => {
+                        if (data.meals) {
 
-                            const mealCard = document.createElement("div");
+                            data.meals.forEach(meal => {
 
-                            mealCard.innerHTML = `
-                                <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-                                <h3>${meal.strMeal}</h3>
-                            `;
+                                const mealCard = document.createElement("div");
 
-                            mealsContainer.appendChild(mealCard);
+                                mealCard.innerHTML = `
+                                    <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                                    <h3>${meal.strMeal}</h3>
+                                `;
 
-                        });
+                                mealsContainer.appendChild(mealCard);
+
+                            });
+
+                        }
 
                     });
 
