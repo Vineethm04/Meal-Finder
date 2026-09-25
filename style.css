@@ -1,0 +1,129 @@
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+header {
+    background-color: #f15a24;
+}
+
+nav {
+    height: 60px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 24px;
+}
+
+.logo {
+    color: white;
+
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu {
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+    height: 410px;
+
+    background-color: #555;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 110px;
+
+    color: white;
+
+    text-align: center;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-container {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+#search-input {
+    width: 310px;
+    height: 55px;
+
+    padding: 0 30px;
+
+    border: none;
+    border-radius: 30px;
+
+    outline: none;
+
+    font-size: 16px;
+}
+
+#search-button {
+    width: 55px;
+    height: 55px;
+
+    margin-left: 10px;
+
+    border: 2px solid white;
+    border-radius: 50%;
+
+    background-color: #f15a24;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   HERO TEXT
+========================= */
+
+.hero h1 {
+    font-size: 34px;
+
+    margin-bottom: 25px;
+
+    letter-spacing: 1px;
+}
+
+.hero p {
+    font-size: 16px;
+
+    letter-spacing: 1px;
+}
