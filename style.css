@@ -194,3 +194,51 @@ nav {
     }
 
 }
+/* =========================
+   MEALS SECTION
+========================= */
+
+.meals-section {
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.meals-section h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+#meals-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+
+/* =========================
+   MEAL CARDS
+========================= */
+
+#meals-container > div {
+    background-color: #f5f5f5;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+}
+
+#meals-container img {
+    width: 100%;
+
+    display: block;
+}
+
+#meals-container h3 {
+    font-size: 18px;
+
+    color: #333;
+
+    padding: 15px;
+}
