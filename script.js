@@ -9,8 +9,9 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
         const categoryCard = document.createElement("div");
 
         categoryCard.innerHTML = `
-            <h3>${category.strCategory}</h3>
-        `;
+    <img src="${category.strCategoryThumb}" alt="${category.strCategory}">
+    <h3>${category.strCategory}</h3>
+`;
 
         categoriesContainer.appendChild(categoryCard);
 
