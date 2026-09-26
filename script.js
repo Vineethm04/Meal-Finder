@@ -2,6 +2,8 @@ const categoriesContainer = document.getElementById("categories-container");
 
 const mealsContainer = document.getElementById("meals-container");
 
+const detailsContainer = document.getElementById("details-container");
+
 const searchInput = document.getElementById("search-input");
 
 const searchButton = document.getElementById("search-button");
@@ -59,7 +61,15 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
                                         .then(response => response.json())
                                         .then(data => {
 
-                                            console.log(data);
+                                            const meal = data.meals[0];
+
+                                            detailsContainer.innerHTML = `
+                                                <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                                                <h2>${meal.strMeal}</h2>
+                                                <p>${meal.strCategory}</p>
+                                                <p>${meal.strArea}</p>
+                                                <p>${meal.strInstructions}</p>
+                                            `;
 
                                         });
 
@@ -114,7 +124,15 @@ searchButton.addEventListener("click", () => {
                             .then(response => response.json())
                             .then(data => {
 
-                                console.log(data);
+                                const meal = data.meals[0];
+
+                                detailsContainer.innerHTML = `
+                                    <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                                    <h2>${meal.strMeal}</h2>
+                                    <p>${meal.strCategory}</p>
+                                    <p>${meal.strArea}</p>
+                                    <p>${meal.strInstructions}</p>
+                                `;
 
                             });
 
