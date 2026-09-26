@@ -2,6 +2,10 @@ const categoriesContainer = document.getElementById("categories-container");
 
 const mealsContainer = document.getElementById("meals-container");
 
+const searchInput = document.getElementById("search-input");
+
+const searchButton = document.getElementById("search-button");
+
 
 fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     .then(response => response.json())
@@ -51,3 +55,33 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
         });
 
     });
+searchButton.addEventListener("click", () => {
+
+    const foodName = searchInput.value;
+
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`)
+        .then(response => response.json())
+        .then(data => {
+
+            mealsContainer.innerHTML = "";
+
+            if (data.meals) {
+
+                data.meals.forEach(meal => {
+
+                    const mealCard = document.createElement("div");
+
+                    mealCard.innerHTML = `
+                        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                        <h3>${meal.strMeal}</h3>
+                    `;
+
+                    mealsContainer.appendChild(mealCard);
+
+                });
+
+            }
+
+        });
+
+});
