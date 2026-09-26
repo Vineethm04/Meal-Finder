@@ -7,6 +7,10 @@ const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 
 
+// =========================
+// LOAD CATEGORIES
+// =========================
+
 fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     .then(response => response.json())
     .then(data => {
@@ -22,6 +26,8 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
 
             categoriesContainer.appendChild(categoryCard);
 
+
+            // CATEGORY CLICK
 
             categoryCard.addEventListener("click", () => {
 
@@ -44,6 +50,21 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
 
                                 mealsContainer.appendChild(mealCard);
 
+
+                                // MEAL CLICK
+
+                                mealCard.addEventListener("click", () => {
+
+                                    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
+                                        .then(response => response.json())
+                                        .then(data => {
+
+                                            console.log(data);
+
+                                        });
+
+                                });
+
                             });
 
                         }
@@ -55,6 +76,12 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
         });
 
     });
+
+
+// =========================
+// SEARCH MEALS
+// =========================
+
 searchButton.addEventListener("click", () => {
 
     const foodName = searchInput.value;
@@ -77,6 +104,21 @@ searchButton.addEventListener("click", () => {
                     `;
 
                     mealsContainer.appendChild(mealCard);
+
+
+                    // MEAL CLICK
+
+                    mealCard.addEventListener("click", () => {
+
+                        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
+                            .then(response => response.json())
+                            .then(data => {
+
+                                console.log(data);
+
+                            });
+
+                    });
 
                 });
 
