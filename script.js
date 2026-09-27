@@ -20,6 +20,78 @@ const sideMenuCategories = document.getElementById("side-menu-categories");
 
 
 // =========================
+// SHOW MEAL DETAILS
+// =========================
+
+function showMealDetails(meal) {
+
+    let ingredients = "";
+
+    for (let i = 1; i <= 20; i++) {
+
+        const ingredient = meal[`strIngredient${i}`];
+
+        if (ingredient && ingredient.trim() !== "") {
+
+            ingredients += `
+                <li>
+                    <span class="ingredient-number">${i}</span>
+                    <span class="ingredient-name">${ingredient}</span>
+                </li>
+            `;
+
+        }
+
+    }
+
+
+    detailsContainer.innerHTML = `
+        <div class="meal-details-content">
+
+            <div class="meal-details-image">
+                <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+            </div>
+
+            <div class="meal-details-info">
+
+                <h2>${meal.strMeal}</h2>
+
+                <div class="details-line"></div>
+
+                <p>
+                    <strong>CATEGORY:</strong>
+                    ${meal.strCategory}
+                </p>
+
+                <p>
+                    <strong>Source:</strong>
+                    ${meal.strSource || ""}
+                </p>
+
+                <p>
+                    <strong>Tags:</strong>
+                    ${meal.strTags || ""}
+                </p>
+
+                <div class="ingredients-box">
+
+                    <h3>Ingredients</h3>
+
+                    <ol>
+                        ${ingredients}
+                    </ol>
+
+                </div>
+
+            </div>
+
+        </div>
+    `;
+
+}
+
+
+// =========================
 // LOAD CATEGORIES
 // =========================
 
@@ -112,13 +184,7 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
 
                                             const mealDetails = data.meals[0];
 
-                                            detailsContainer.innerHTML = `
-                                                <img src="${mealDetails.strMealThumb}" alt="${mealDetails.strMeal}">
-                                                <h2>${mealDetails.strMeal}</h2>
-                                                <p>${mealDetails.strCategory}</p>
-                                                <p>${mealDetails.strArea}</p>
-                                                <p>${mealDetails.strInstructions}</p>
-                                            `;
+                                            showMealDetails(mealDetails);
 
                                         });
 
@@ -176,13 +242,7 @@ searchButton.addEventListener("click", () => {
 
                                 const mealDetails = data.meals[0];
 
-                                detailsContainer.innerHTML = `
-                                    <img src="${mealDetails.strMealThumb}" alt="${mealDetails.strMeal}">
-                                    <h2>${mealDetails.strMeal}</h2>
-                                    <p>${mealDetails.strCategory}</p>
-                                    <p>${mealDetails.strArea}</p>
-                                    <p>${mealDetails.strInstructions}</p>
-                                `;
+                                showMealDetails(mealDetails);
 
                             });
 
