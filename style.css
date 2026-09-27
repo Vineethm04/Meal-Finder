@@ -307,3 +307,26 @@ nav {
 
     color: #555;
 }
+/* =========================
+   RESPONSIVE MEAL DETAILS
+========================= */
+
+@media (max-width: 480px) {
+
+    .details-section {
+        padding: 30px 15px;
+    }
+
+    #details-container {
+        padding: 20px;
+    }
+
+    #details-container h2 {
+        font-size: 24px;
+    }
+
+    #details-container p {
+        font-size: 15px;
+    }
+
+}
