@@ -68,10 +68,22 @@ function showMealDetails(meal) {
                     ${meal.strSource || ""}
                 </p>
 
-                <p>
+                <div class="meal-tags-section">
+
                     <strong>Tags:</strong>
-                    ${meal.strTags || ""}
-                </p>
+
+                    <div class="meal-tags">
+                        ${
+                            meal.strTags
+                                ? meal.strTags
+                                    .split(",")
+                                    .map(tag => `<span class="tag">${tag.trim()}</span>`)
+                                    .join("")
+                                : ""
+                        }
+                    </div>
+
+                </div>
 
                 <div class="ingredients-box">
 

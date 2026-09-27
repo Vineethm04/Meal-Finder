@@ -443,6 +443,35 @@ nav {
 
 
 /* =========================
+   MEAL TAGS
+========================= */
+
+.meal-tags-section {
+    font-size: 16px;
+
+    color: #333;
+
+    margin-bottom: 12px;
+}
+
+.meal-tags-section strong {
+    font-weight: bold;
+}
+
+.meal-tags {
+    display: inline;
+
+    margin-left: 8px;
+}
+
+.meal-tags .tag {
+    margin-right: 8px;
+
+    color: #333;
+}
+
+
+/* =========================
    INGREDIENTS BOX
 ========================= */
 
