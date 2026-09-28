@@ -22,7 +22,7 @@ header {
 }
 
 nav {
-    height: 60px;
+    height: 75px;
 
     display: flex;
     justify-content: space-between;
@@ -52,15 +52,26 @@ nav {
 ========================= */
 
 .hero {
-    height: 410px;
+    height: 500px;
 
-    background-color: #555;
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.45)
+        ),
+        url("hero_img.jpeg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    padding-top: 110px;
+    padding-top: 135px;
 
     color: white;
 
@@ -76,17 +87,17 @@ nav {
     display: flex;
     align-items: center;
 
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
 #search-input {
-    width: 310px;
-    height: 55px;
+    width: 375px;
+    height: 68px;
 
     padding: 0 30px;
 
     border: none;
-    border-radius: 30px;
+    border-radius: 35px;
 
     outline: none;
 
@@ -94,10 +105,10 @@ nav {
 }
 
 #search-button {
-    width: 55px;
-    height: 55px;
+    width: 68px;
+    height: 68px;
 
-    margin-left: 10px;
+    margin-left: 15px;
 
     border: 2px solid white;
     border-radius: 50%;
@@ -106,7 +117,7 @@ nav {
 
     color: white;
 
-    font-size: 22px;
+    font-size: 24px;
 
     cursor: pointer;
 }
@@ -136,17 +147,21 @@ nav {
 ========================= */
 
 .categories-section {
-    padding: 80px 20px;
+    background-color: #f5f5f5;
+
+    padding: 100px 20px 70px;
 
     text-align: left;
 }
 
 .categories-section h2 {
+    max-width: 1600px;
+
+    margin: 0 auto 45px;
+
     font-size: 26px;
 
     letter-spacing: 3px;
-
-    margin-bottom: 50px;
 
     position: relative;
 
@@ -172,11 +187,15 @@ nav {
 ========================= */
 
 #categories-container {
+    max-width: 1600px;
+
+    margin: auto;
+
     display: grid;
 
     grid-template-columns: repeat(5, 1fr);
 
-    gap: 16px;
+    gap: 30px;
 }
 
 
@@ -187,7 +206,7 @@ nav {
 #categories-container > div {
     background-color: white;
 
-    border-radius: 4px;
+    border-radius: 2px;
 
     overflow: hidden;
 
@@ -201,7 +220,7 @@ nav {
 #categories-container img {
     width: 100%;
 
-    height: 100px;
+    height: 170px;
 
     object-fit: contain;
 
@@ -211,20 +230,20 @@ nav {
 #categories-container h3 {
     position: absolute;
 
-    top: 8px;
-    right: 8px;
+    top: 10px;
+    right: 10px;
 
     background-color: #f15a24;
 
     color: white;
 
-    font-size: 12px;
+    font-size: 13px;
 
     font-weight: bold;
 
-    padding: 5px 8px;
+    padding: 6px 10px;
 
-    border-radius: 3px;
+    border-radius: 4px;
 
     text-transform: uppercase;
 }
@@ -236,12 +255,18 @@ nav {
 
 .category-description-section {
     padding: 40px 20px;
+
+    background-color: white;
 }
 
 #category-description {
+    max-width: 1600px;
+
+    margin: auto;
+
     border: 1px solid #f15a24;
 
-    padding: 20px;
+    padding: 30px;
 
     background-color: white;
 }
@@ -249,15 +274,15 @@ nav {
 #category-description h3 {
     color: #f15a24;
 
-    font-size: 18px;
+    font-size: 24px;
 
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 #category-description p {
-    color: #666;
+    color: #555;
 
-    font-size: 14px;
+    font-size: 18px;
 
     line-height: 1.6;
 }
@@ -268,17 +293,21 @@ nav {
 ========================= */
 
 .meals-section {
-    padding: 80px 20px;
+    padding: 70px 20px;
+
+    background-color: white;
 
     text-align: left;
 }
 
 .meals-section h2 {
+    max-width: 1600px;
+
+    margin: 0 auto 50px;
+
     font-size: 26px;
 
     letter-spacing: 3px;
-
-    margin-bottom: 50px;
 
     position: relative;
 
@@ -290,8 +319,8 @@ nav {
 
     display: block;
 
-    width: 50px;
-    height: 3px;
+    width: 100px;
+    height: 4px;
 
     background-color: #f15a24;
 
@@ -304,11 +333,15 @@ nav {
 ========================= */
 
 #meals-container {
+    max-width: 1600px;
+
+    margin: auto;
+
     display: grid;
 
     grid-template-columns: repeat(5, 1fr);
 
-    gap: 16px;
+    gap: 30px;
 }
 
 
@@ -319,11 +352,9 @@ nav {
 #meals-container > div {
     background-color: white;
 
-    border-radius: 4px;
+    border-radius: 2px;
 
     overflow: hidden;
-
-    position: relative;
 
     cursor: pointer;
 
@@ -333,7 +364,7 @@ nav {
 #meals-container img {
     width: 100%;
 
-    aspect-ratio: 1 / 1;
+    height: 250px;
 
     object-fit: cover;
 
@@ -353,23 +384,63 @@ nav {
 #meals-container h3 {
     font-size: 18px;
 
+    line-height: 1.4;
+
     color: #333;
 
-    padding: 5px 15px 15px;
+    padding: 5px 15px 18px;
 
     margin: 0;
 }
 
 
 /* =========================
-   MEAL DETAILS
+   MEAL DETAILS SECTION
 ========================= */
 
 .details-section {
-    padding: 40px 20px;
+    padding: 25px 20px 80px;
+
+    background-color: #f5f5f5;
 
     text-align: left;
 }
+
+
+/* =========================
+   MEAL DETAILS HEADING
+========================= */
+
+.details-section::before {
+    content: "MEAL DETAILS";
+
+    display: block;
+
+    max-width: 1600px;
+
+    margin: 0 auto 55px;
+
+    padding-bottom: 12px;
+
+    border-bottom: 4px solid #f15a24;
+
+    width: fit-content;
+
+    margin-left: max(20px, calc((100% - 1600px) / 2));
+
+    font-size: 26px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    color: #111;
+}
+
+
+/* =========================
+   MEAL DETAILS CONTAINER
+========================= */
 
 #details-container {
     max-width: 1600px;
@@ -380,7 +451,9 @@ nav {
 
     padding: 60px;
 
-    border-radius: 4px;
+    border-radius: 2px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .meal-details-content {
@@ -388,7 +461,7 @@ nav {
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 60px;
+    gap: 80px;
 
     align-items: start;
 }
@@ -412,7 +485,9 @@ nav {
 .meal-details-info h2 {
     font-size: 30px;
 
-    color: #f15a24;
+    line-height: 1.4;
+
+    color: #d95a2b;
 
     margin-bottom: 20px;
 }
@@ -422,7 +497,7 @@ nav {
 
     height: 1px;
 
-    background-color: #f15a24;
+    background-color: #d95a2b;
 
     margin-bottom: 35px;
 }
@@ -451,7 +526,7 @@ nav {
 
     color: #333;
 
-    margin-bottom: 12px;
+    margin-bottom: 35px;
 }
 
 .meal-tags-section strong {
@@ -465,9 +540,21 @@ nav {
 }
 
 .meal-tags .tag {
+    display: inline-block;
+
     margin-right: 8px;
 
-    color: #333;
+    padding: 5px 10px;
+
+    border: 1px solid #d95a2b;
+
+    border-radius: 4px;
+
+    color: #d95a2b;
+
+    background-color: white;
+
+    font-size: 15px;
 }
 
 
@@ -480,7 +567,7 @@ nav {
 
     padding: 25px 20px;
 
-    background-color: #f15a24;
+    background-color: #e95a24;
 
     color: white;
 }
@@ -564,15 +651,14 @@ nav {
     transition: right 0.3s ease;
 }
 
-
-/* OPEN MENU */
-
 .side-menu.active {
     right: 0;
 }
 
 
-/* CLOSE BUTTON */
+/* =========================
+   CLOSE BUTTON
+========================= */
 
 #close-menu {
     position: absolute;
@@ -592,7 +678,9 @@ nav {
 }
 
 
-/* SIDE MENU CATEGORIES */
+/* =========================
+   SIDE MENU CATEGORIES
+========================= */
 
 #side-menu-categories {
     display: flex;
@@ -619,18 +707,74 @@ nav {
    RESPONSIVE
 ========================= */
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
 
-    #categories-container {
-        grid-template-columns: repeat(2, 1fr);
+    #categories-container,
+    #meals-container {
+        grid-template-columns: repeat(4, 1fr);
     }
 
+}
+
+
+@media (max-width: 900px) {
+
+    #categories-container,
     #meals-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .meal-details-content {
         grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    nav {
+        height: 60px;
+    }
+
+    .hero {
+        height: 420px;
+
+        padding-top: 100px;
+    }
+
+    #search-input {
+        width: 280px;
+
+        height: 55px;
+    }
+
+    #search-button {
+        width: 55px;
+        height: 55px;
+
+        font-size: 20px;
+    }
+
+    #categories-container,
+    #meals-container {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 20px;
+    }
+
+    #categories-container img {
+        height: 140px;
+    }
+
+    #meals-container img {
+        height: 200px;
+    }
+
+    #details-container {
+        padding: 30px;
     }
 
 }
@@ -638,28 +782,70 @@ nav {
 
 @media (max-width: 480px) {
 
-    .details-section {
-        padding: 30px 15px;
+    .hero {
+        height: 400px;
+
+        padding-top: 80px;
     }
 
-    #categories-container {
-        grid-template-columns: 1fr;
+    .hero h1 {
+        font-size: 26px;
     }
 
+    .hero p {
+        font-size: 14px;
+    }
+
+    .search-container {
+        margin-bottom: 25px;
+    }
+
+    #search-input {
+        width: 220px;
+
+        height: 48px;
+
+        font-size: 14px;
+    }
+
+    #search-button {
+        width: 48px;
+        height: 48px;
+
+        margin-left: 8px;
+
+        font-size: 18px;
+    }
+
+    #categories-container,
     #meals-container {
         grid-template-columns: 1fr;
+    }
+
+    .categories-section,
+    .meals-section {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .category-description-section,
+    .details-section {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     #details-container {
         padding: 20px;
     }
 
-    #details-container h2 {
-        font-size: 24px;
+    .details-section::before {
+        margin-left: 0;
+
+        font-size: 22px;
     }
 
-    #details-container p {
-        font-size: 15px;
+    .meal-details-info h2 {
+        font-size: 25px;
     }
 
     .ingredients-box ol {
