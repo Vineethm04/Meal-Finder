@@ -48,7 +48,6 @@ const breadcrumbMeal =
     document.getElementById("breadcrumb-meal");
 
 
-
 // =========================
 // INITIAL PAGE STATE
 // =========================
@@ -58,7 +57,6 @@ categoryDescriptionSection.style.display = "none";
 mealsSection.style.display = "none";
 
 detailsSection.style.display = "none";
-
 
 
 // =========================
@@ -72,7 +70,6 @@ function showMealDetails(meal) {
     let measurements = "";
 
     let instructions = "";
-
 
 
     // =========================
@@ -131,7 +128,6 @@ function showMealDetails(meal) {
     }
 
 
-
     // =========================
     // INSTRUCTIONS
     // =========================
@@ -165,7 +161,6 @@ function showMealDetails(meal) {
     }
 
 
-
     // =========================
     // TAGS
     // =========================
@@ -185,14 +180,12 @@ function showMealDetails(meal) {
     }
 
 
-
     // =========================
     // BREADCRUMB
     // =========================
 
     breadcrumbMeal.textContent =
         meal.strMeal.toUpperCase();
-
 
 
     // =========================
@@ -218,7 +211,6 @@ function showMealDetails(meal) {
                 >
 
             </div>
-
 
 
             <!-- MEAL INFORMATION -->
@@ -271,7 +263,6 @@ function showMealDetails(meal) {
                 </div>
 
 
-
                 <!-- =========================
                      INGREDIENTS
                 ========================= -->
@@ -294,7 +285,6 @@ function showMealDetails(meal) {
             </div>
 
         </div>
-
 
 
         <!-- =========================
@@ -321,7 +311,6 @@ function showMealDetails(meal) {
         </div>
 
 
-
         <!-- =========================
              INSTRUCTIONS
         ========================= -->
@@ -344,7 +333,6 @@ function showMealDetails(meal) {
     `;
 
 
-
     // =========================
     // PAGE STATE
     // =========================
@@ -358,9 +346,11 @@ function showMealDetails(meal) {
     detailsSection.style.display =
         "block";
 
-    categoriesSection.style.display =
-        "block";
 
+    // IMPORTANT:
+    // Categories are NOT changed here.
+    // If they were hidden by category selection,
+    // they remain hidden.
 
 
     // =========================
@@ -374,12 +364,18 @@ function showMealDetails(meal) {
 }
 
 
-
 // =========================
 // SHOW CATEGORY
 // =========================
 
 function showCategory(category) {
+
+    // HIDE CATEGORIES ONLY AFTER
+    // A CATEGORY IS SELECTED
+
+    categoriesSection.style.display =
+        "none";
+
 
     categoryDescriptionSection.style.display =
         "block";
@@ -391,13 +387,11 @@ function showCategory(category) {
         "none";
 
 
-
     categoryDescription.innerHTML = `
 
         <h3>
             ${category.strCategory}
         </h3>
-
 
         <p>
             ${category.strCategoryDescription}
@@ -406,9 +400,7 @@ function showCategory(category) {
     `;
 
 
-
     mealsContainer.innerHTML = "";
-
 
 
     // =========================
@@ -436,7 +428,6 @@ function showCategory(category) {
                 return;
 
             }
-
 
 
             data.meals.forEach(meal => {
@@ -479,7 +470,6 @@ function showCategory(category) {
                 );
 
 
-
                 // =========================
                 // GET FULL MEAL INFORMATION
                 // =========================
@@ -507,7 +497,6 @@ function showCategory(category) {
                             "Not found";
 
 
-
                         // =========================
                         // MEAL CLICK
                         // =========================
@@ -528,7 +517,6 @@ function showCategory(category) {
             });
 
 
-
             mealsSection.scrollIntoView({
                 behavior: "smooth"
             });
@@ -536,7 +524,6 @@ function showCategory(category) {
         });
 
 }
-
 
 
 // =========================
@@ -586,7 +573,6 @@ fetch(
             );
 
 
-
             // =========================
             // CATEGORY CLICK
             // =========================
@@ -599,7 +585,6 @@ fetch(
 
                 }
             );
-
 
 
             // =========================
@@ -637,7 +622,6 @@ fetch(
     });
 
 
-
 // =========================
 // SEARCH
 // =========================
@@ -646,7 +630,6 @@ searchButton.addEventListener(
     "click",
     searchMeals
 );
-
 
 
 function searchMeals() {
@@ -662,7 +645,6 @@ function searchMeals() {
     }
 
 
-
     categoryDescriptionSection.style.display =
         "none";
 
@@ -674,7 +656,6 @@ function searchMeals() {
 
 
     mealsContainer.innerHTML = "";
-
 
 
     // =========================
@@ -703,7 +684,6 @@ function searchMeals() {
                 return;
 
             }
-
 
 
             data.meals.forEach(meal => {
@@ -746,7 +726,6 @@ function searchMeals() {
                 );
 
 
-
                 // =========================
                 // CLICK MEAL
                 // =========================
@@ -786,7 +765,6 @@ function searchMeals() {
 }
 
 
-
 // =========================
 // ENTER KEY SEARCH
 // =========================
@@ -805,7 +783,6 @@ searchInput.addEventListener(
 );
 
 
-
 // =========================
 // SIDE MENU OPEN
 // =========================
@@ -820,7 +797,6 @@ menuButton.addEventListener(
 
     }
 );
-
 
 
 // =========================
