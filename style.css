@@ -1115,3 +1115,10 @@ nav {
     }
 
 }
+#side-menu-categories div:hover {
+    color: #f15a24;
+}
+
+#close-menu:hover {
+    color: #f15a24;
+}
