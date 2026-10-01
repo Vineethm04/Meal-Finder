@@ -346,11 +346,8 @@ function showMealDetails(meal) {
     detailsSection.style.display =
         "block";
 
-
-    // IMPORTANT:
-    // Categories are NOT changed here.
-    // If they were hidden by category selection,
-    // they remain hidden.
+    categoriesSection.style.display =
+        "block";
 
 
     // =========================
@@ -370,7 +367,7 @@ function showMealDetails(meal) {
 
 function showCategory(category) {
 
-    // HIDE CATEGORIES ONLY AFTER
+    // HIDE CATEGORIES AFTER
     // A CATEGORY IS SELECTED
 
     categoriesSection.style.display =
