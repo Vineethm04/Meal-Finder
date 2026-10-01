@@ -1,22 +1,64 @@
-const categoriesContainer = document.getElementById("categories-container");
+// =========================
+// ELEMENTS
+// =========================
 
-const mealsContainer = document.getElementById("meals-container");
+const categoriesContainer =
+    document.getElementById("categories-container");
 
-const detailsContainer = document.getElementById("details-container");
+const mealsContainer =
+    document.getElementById("meals-container");
 
-const categoryDescription = document.getElementById("category-description");
+const detailsContainer =
+    document.getElementById("details-container");
 
-const searchInput = document.getElementById("search-input");
+const categoryDescription =
+    document.getElementById("category-description");
 
-const searchButton = document.getElementById("search-button");
+const searchInput =
+    document.getElementById("search-input");
 
-const menuButton = document.getElementById("menu-button");
+const searchButton =
+    document.getElementById("search-button");
 
-const sideMenu = document.getElementById("side-menu");
+const menuButton =
+    document.getElementById("menu-button");
 
-const closeMenu = document.getElementById("close-menu");
+const sideMenu =
+    document.getElementById("side-menu");
 
-const sideMenuCategories = document.getElementById("side-menu-categories");
+const closeMenu =
+    document.getElementById("close-menu");
+
+const sideMenuCategories =
+    document.getElementById("side-menu-categories");
+
+const categoriesSection =
+    document.querySelector(".categories-section");
+
+const categoryDescriptionSection =
+    document.querySelector(".category-description-section");
+
+const mealsSection =
+    document.querySelector(".meals-section");
+
+const detailsSection =
+    document.querySelector(".details-section");
+
+const breadcrumbMeal =
+    document.getElementById("breadcrumb-meal");
+
+
+
+// =========================
+// INITIAL PAGE STATE
+// =========================
+
+categoryDescriptionSection.style.display = "none";
+
+mealsSection.style.display = "none";
+
+detailsSection.style.display = "none";
+
 
 
 // =========================
@@ -27,16 +69,60 @@ function showMealDetails(meal) {
 
     let ingredients = "";
 
+    let measurements = "";
+
+    let instructions = "";
+
+
+
+    // =========================
+    // INGREDIENTS & MEASURES
+    // =========================
+
     for (let i = 1; i <= 20; i++) {
 
-        const ingredient = meal[`strIngredient${i}`];
+        const ingredient =
+            meal[`strIngredient${i}`];
 
-        if (ingredient && ingredient.trim() !== "") {
+        const measurement =
+            meal[`strMeasure${i}`];
+
+
+        if (
+            ingredient &&
+            ingredient.trim() !== ""
+        ) {
+
+            // INGREDIENT
 
             ingredients += `
                 <li>
-                    <span class="ingredient-number">${i}</span>
-                    <span class="ingredient-name">${ingredient}</span>
+
+                    <span class="ingredient-number">
+                        ${i}
+                    </span>
+
+                    <span class="ingredient-name">
+                        ${ingredient}
+                    </span>
+
+                </li>
+            `;
+
+
+            // MEASURE
+
+            measurements += `
+                <li>
+
+                    <span class="measure-icon">
+                        🔑
+                    </span>
+
+                    <span>
+                        ${measurement || ""}
+                    </span>
+
                 </li>
             `;
 
@@ -45,52 +131,162 @@ function showMealDetails(meal) {
     }
 
 
+
+    // =========================
+    // INSTRUCTIONS
+    // =========================
+
+    if (meal.strInstructions) {
+
+        const steps =
+            meal.strInstructions
+                .split(/\r?\n/)
+                .filter(step => step.trim() !== "");
+
+
+        steps.forEach(step => {
+
+            instructions += `
+                <li>
+
+                    <span class="instruction-icon">
+                        ☑
+                    </span>
+
+                    <span>
+                        ${step.trim()}
+                    </span>
+
+                </li>
+            `;
+
+        });
+
+    }
+
+
+
+    // =========================
+    // TAGS
+    // =========================
+
+    let tags = "";
+
+    if (meal.strTags) {
+
+        tags = meal.strTags
+            .split(",")
+            .map(
+                tag =>
+                    `<span class="tag">${tag.trim()}</span>`
+            )
+            .join("");
+
+    }
+
+
+
+    // =========================
+    // BREADCRUMB
+    // =========================
+
+    breadcrumbMeal.textContent =
+        meal.strMeal.toUpperCase();
+
+
+
+    // =========================
+    // DETAILS HTML
+    // =========================
+
     detailsContainer.innerHTML = `
+
+        <!-- =========================
+             TOP DETAILS
+        ========================= -->
+
         <div class="meal-details-content">
 
+
+            <!-- MEAL IMAGE -->
+
             <div class="meal-details-image">
-                <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+
+                <img
+                    src="${meal.strMealThumb}"
+                    alt="${meal.strMeal}"
+                >
+
             </div>
+
+
+
+            <!-- MEAL INFORMATION -->
 
             <div class="meal-details-info">
 
-                <h2>${meal.strMeal}</h2>
+                <h2>
+                    ${meal.strMeal}
+                </h2>
+
 
                 <div class="details-line"></div>
 
-                <p>
-                    <strong>CATEGORY:</strong>
-                    ${meal.strCategory}
-                </p>
 
                 <p>
-                    <strong>Source:</strong>
-                    ${meal.strSource || ""}
+
+                    <strong>
+                        CATEGORY:
+                    </strong>
+
+                    ${meal.strCategory}
+
                 </p>
+
+
+                <p>
+
+                    <strong>
+                        Source:
+                    </strong>
+
+                    ${meal.strSource || "Not found"}
+
+                </p>
+
 
                 <div class="meal-tags-section">
 
-                    <strong>Tags:</strong>
+                    <strong>
+                        Tags:
+                    </strong>
+
 
                     <div class="meal-tags">
-                        ${
-                            meal.strTags
-                                ? meal.strTags
-                                    .split(",")
-                                    .map(tag => `<span class="tag">${tag.trim()}</span>`)
-                                    .join("")
-                                : ""
-                        }
+
+                        ${tags}
+
                     </div>
 
                 </div>
 
+
+
+                <!-- =========================
+                     INGREDIENTS
+                ========================= -->
+
                 <div class="ingredients-box">
 
-                    <h3>Ingredients</h3>
+                    <h3>
+                        Ingredients
+                    </h3>
 
-                    <ol>
+
+                    <ol class="ingredients-list">
+
                         ${ingredients}
+
                     </ol>
 
                 </div>
@@ -98,190 +294,546 @@ function showMealDetails(meal) {
             </div>
 
         </div>
+
+
+
+        <!-- =========================
+             MEASURE
+        ========================= -->
+
+        <div class="measure-section">
+
+            <h3>
+                Measure:
+            </h3>
+
+
+            <div class="measure-box">
+
+                <ol class="measures-list">
+
+                    ${measurements}
+
+                </ol>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             INSTRUCTIONS
+        ========================= -->
+
+        <div class="instructions-section">
+
+            <h3>
+                Instructions:
+            </h3>
+
+
+            <ol class="instructions-list">
+
+                ${instructions}
+
+            </ol>
+
+        </div>
+
     `;
 
+
+
+    // =========================
+    // PAGE STATE
+    // =========================
+
+    categoryDescriptionSection.style.display =
+        "none";
+
+    mealsSection.style.display =
+        "none";
+
+    detailsSection.style.display =
+        "block";
+
+    categoriesSection.style.display =
+        "block";
+
+
+
+    // =========================
+    // SCROLL TO DETAILS
+    // =========================
+
+    detailsSection.scrollIntoView({
+        behavior: "smooth"
+    });
+
 }
+
+
+
+// =========================
+// SHOW CATEGORY
+// =========================
+
+function showCategory(category) {
+
+    categoryDescriptionSection.style.display =
+        "block";
+
+    mealsSection.style.display =
+        "block";
+
+    detailsSection.style.display =
+        "none";
+
+
+
+    categoryDescription.innerHTML = `
+
+        <h3>
+            ${category.strCategory}
+        </h3>
+
+
+        <p>
+            ${category.strCategoryDescription}
+        </p>
+
+    `;
+
+
+
+    mealsContainer.innerHTML = "";
+
+
+
+    // =========================
+    // GET CATEGORY MEALS
+    // =========================
+
+    fetch(
+        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category.strCategory}`
+    )
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            if (!data.meals) {
+
+                mealsContainer.innerHTML = `
+
+                    <p class="no-results">
+                        No any food found.
+                    </p>
+
+                `;
+
+                return;
+
+            }
+
+
+
+            data.meals.forEach(meal => {
+
+                const mealCard =
+                    document.createElement("div");
+
+
+                mealCard.className =
+                    "meal-card";
+
+
+                mealCard.innerHTML = `
+
+                    <img
+                        src="${meal.strMealThumb}"
+                        alt="${meal.strMeal}"
+                    >
+
+
+                    <span class="meal-category">
+                        ${category.strCategory}
+                    </span>
+
+
+                    <p class="meal-area">
+                        Loading...
+                    </p>
+
+
+                    <h3>
+                        ${meal.strMeal}
+                    </h3>
+
+                `;
+
+
+                mealsContainer.appendChild(
+                    mealCard
+                );
+
+
+
+                // =========================
+                // GET FULL MEAL INFORMATION
+                // =========================
+
+                fetch(
+                    `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`
+                )
+
+                    .then(response => response.json())
+
+                    .then(data => {
+
+                        const mealDetails =
+                            data.meals[0];
+
+
+                        const areaElement =
+                            mealCard.querySelector(
+                                ".meal-area"
+                            );
+
+
+                        areaElement.textContent =
+                            mealDetails.strArea ||
+                            "Not found";
+
+
+
+                        // =========================
+                        // MEAL CLICK
+                        // =========================
+
+                        mealCard.addEventListener(
+                            "click",
+                            () => {
+
+                                showMealDetails(
+                                    mealDetails
+                                );
+
+                            }
+                        );
+
+                    });
+
+            });
+
+
+
+            mealsSection.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        });
+
+}
+
 
 
 // =========================
 // LOAD CATEGORIES
 // =========================
 
-fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
+fetch(
+    "https://www.themealdb.com/api/json/v1/1/categories.php"
+)
+
     .then(response => response.json())
+
     .then(data => {
 
         data.categories.forEach(category => {
 
-            const categoryCard = document.createElement("div");
+
+            // =========================
+            // CATEGORY CARD
+            // =========================
+
+            const categoryCard =
+                document.createElement("div");
+
+
+            categoryCard.className =
+                "category-card";
+
 
             categoryCard.innerHTML = `
-                <img src="${category.strCategoryThumb}" alt="${category.strCategory}">
-                <h3>${category.strCategory}</h3>
+
+                <img
+                    src="${category.strCategoryThumb}"
+                    alt="${category.strCategory}"
+                >
+
+
+                <h3>
+                    ${category.strCategory}
+                </h3>
+
             `;
 
-            categoriesContainer.appendChild(categoryCard);
+
+            categoriesContainer.appendChild(
+                categoryCard
+            );
 
 
-            // SIDE MENU CATEGORY
 
-            const sideMenuCategory = document.createElement("div");
-
-            sideMenuCategory.textContent = category.strCategory;
-
-            sideMenuCategories.appendChild(sideMenuCategory);
-
-
-            sideMenuCategory.addEventListener("click", () => {
-
-                categoryCard.click();
-
-                sideMenu.classList.remove("active");
-
-            });
-
-
+            // =========================
             // CATEGORY CLICK
+            // =========================
 
-            categoryCard.addEventListener("click", () => {
+            categoryCard.addEventListener(
+                "click",
+                () => {
 
-                categoryDescription.innerHTML = `
-                    <h3>${category.strCategory}</h3>
-                    <p>${category.strCategoryDescription}</p>
-                `;
+                    showCategory(category);
 
-
-                fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category.strCategory}`)
-                    .then(response => response.json())
-                    .then(data => {
-
-                        mealsContainer.innerHTML = "";
-
-                        if (data.meals) {
-
-                            data.meals.forEach(meal => {
-
-                                const mealCard = document.createElement("div");
-
-                                mealCard.innerHTML = `
-                                    <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-                                    <p class="meal-area"></p>
-                                    <h3>${meal.strMeal}</h3>
-                                `;
-
-                                mealsContainer.appendChild(mealCard);
+                }
+            );
 
 
-                                // GET MEAL AREA
 
-                                fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
-                                    .then(response => response.json())
-                                    .then(data => {
+            // =========================
+            // SIDE MENU
+            // =========================
 
-                                        const mealDetails = data.meals[0];
-
-                                        mealCard.querySelector(".meal-area").textContent =
-                                            mealDetails.strArea;
-
-                                    });
+            const sideMenuCategory =
+                document.createElement("div");
 
 
-                                // MEAL CLICK
+            sideMenuCategory.textContent =
+                category.strCategory;
 
-                                mealCard.addEventListener("click", () => {
 
-                                    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
-                                        .then(response => response.json())
-                                        .then(data => {
+            sideMenuCategories.appendChild(
+                sideMenuCategory
+            );
 
-                                            const mealDetails = data.meals[0];
 
-                                            showMealDetails(mealDetails);
+            sideMenuCategory.addEventListener(
+                "click",
+                () => {
 
-                                        });
+                    showCategory(category);
 
-                                });
+                    sideMenu.classList.remove(
+                        "active"
+                    );
 
-                            });
-
-                        }
-
-                    });
-
-            });
+                }
+            );
 
         });
 
     });
 
 
+
 // =========================
-// SEARCH MEALS
+// SEARCH
 // =========================
 
-searchButton.addEventListener("click", () => {
+searchButton.addEventListener(
+    "click",
+    searchMeals
+);
 
-    const foodName = searchInput.value;
 
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`)
+
+function searchMeals() {
+
+    const foodName =
+        searchInput.value.trim();
+
+
+    if (foodName === "") {
+
+        return;
+
+    }
+
+
+
+    categoryDescriptionSection.style.display =
+        "none";
+
+    mealsSection.style.display =
+        "block";
+
+    detailsSection.style.display =
+        "none";
+
+
+    mealsContainer.innerHTML = "";
+
+
+
+    // =========================
+    // SEARCH API
+    // =========================
+
+    fetch(
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`
+    )
+
         .then(response => response.json())
+
         .then(data => {
 
-            mealsContainer.innerHTML = "";
 
-            if (data.meals) {
+            if (!data.meals) {
 
-                data.meals.forEach(meal => {
+                mealsContainer.innerHTML = `
 
-                    const mealCard = document.createElement("div");
+                    <p class="no-results">
+                        No any food found.
+                    </p>
 
-                    mealCard.innerHTML = `
-                        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-                        <p class="meal-area">${meal.strArea}</p>
-                        <h3>${meal.strMeal}</h3>
-                    `;
+                `;
 
-                    mealsContainer.appendChild(mealCard);
-
-
-                    // MEAL CLICK
-
-                    mealCard.addEventListener("click", () => {
-
-                        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
-                            .then(response => response.json())
-                            .then(data => {
-
-                                const mealDetails = data.meals[0];
-
-                                showMealDetails(mealDetails);
-
-                            });
-
-                    });
-
-                });
+                return;
 
             }
 
+
+
+            data.meals.forEach(meal => {
+
+                const mealCard =
+                    document.createElement("div");
+
+
+                mealCard.className =
+                    "meal-card";
+
+
+                mealCard.innerHTML = `
+
+                    <img
+                        src="${meal.strMealThumb}"
+                        alt="${meal.strMeal}"
+                    >
+
+
+                    <span class="meal-category">
+                        ${meal.strCategory}
+                    </span>
+
+
+                    <p class="meal-area">
+                        ${meal.strArea || "Not found"}
+                    </p>
+
+
+                    <h3>
+                        ${meal.strMeal}
+                    </h3>
+
+                `;
+
+
+                mealsContainer.appendChild(
+                    mealCard
+                );
+
+
+
+                // =========================
+                // CLICK MEAL
+                // =========================
+
+                mealCard.addEventListener(
+                    "click",
+                    () => {
+
+                        fetch(
+                            `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`
+                        )
+
+                            .then(
+                                response =>
+                                    response.json()
+                            )
+
+                            .then(data => {
+
+                                const mealDetails =
+                                    data.meals[0];
+
+
+                                showMealDetails(
+                                    mealDetails
+                                );
+
+                            });
+
+                    }
+                );
+
+            });
+
         });
 
-});
+}
+
 
 
 // =========================
-// SIDE MENU
+// ENTER KEY SEARCH
 // =========================
 
-menuButton.addEventListener("click", () => {
+searchInput.addEventListener(
+    "keydown",
+    event => {
 
-    sideMenu.classList.add("active");
+        if (event.key === "Enter") {
 
-});
+            searchMeals();
+
+        }
+
+    }
+);
 
 
-closeMenu.addEventListener("click", () => {
 
-    sideMenu.classList.remove("active");
+// =========================
+// SIDE MENU OPEN
+// =========================
 
-});
+menuButton.addEventListener(
+    "click",
+    () => {
+
+        sideMenu.classList.add(
+            "active"
+        );
+
+    }
+);
+
+
+
+// =========================
+// SIDE MENU CLOSE
+// =========================
+
+closeMenu.addEventListener(
+    "click",
+    () => {
+
+        sideMenu.classList.remove(
+            "active"
+        );
+
+    }
+);

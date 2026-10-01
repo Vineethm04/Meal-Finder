@@ -13,37 +13,53 @@
 
 </head>
 
+
 <body>
 
-    <!-- NAVBAR -->
 
-<header>
-    <nav>
-        <div class="logo">
-            🏠 MEAL FINDER
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <header>
+
+        <nav>
+
+            <div class="logo">
+                🏠 MEAL FINDER
+            </div>
+
+            <div class="menu" id="menu-button">
+                ☰
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         SIDE MENU
+    ========================= -->
+
+    <div class="side-menu" id="side-menu">
+
+        <button id="close-menu">
+            ×
+        </button>
+
+        <div id="side-menu-categories">
+            <!-- Categories added using JavaScript -->
         </div>
 
-        <div class="menu" id="menu-button">
-            ☰
-        </div>
-    </nav>
-</header>
-
-<!-- SIDE MENU -->
-<aside class="side-menu" id="side-menu">
-
-    <button id="close-menu">
-        ×
-    </button>
-
-    <div id="side-menu-categories">
-        <!-- Categories will be added here using JavaScript -->
     </div>
 
-</aside>
 
 
-    <!-- HERO SECTION -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
     <section class="hero">
 
@@ -61,9 +77,11 @@
 
         </div>
 
+
         <h1>
             What are your favorite cuisines?
         </h1>
+
 
         <p>
             PERSONALIZE YOUR EXPERIENCE
@@ -72,54 +90,93 @@
     </section>
 
 
-    <!-- CATEGORIES -->
 
-    <section class="categories-section">
-
-        <h2>Categories</h2>
-
-        <div id="categories-container">
-
-            <!-- Categories will be added here using JavaScript -->
-
-        </div>
-
-    </section>
-        <!-- CATEGORY DESCRIPTION -->
+    <!-- =========================
+         CATEGORY DESCRIPTION
+    ========================= -->
 
     <section class="category-description-section">
 
         <div id="category-description">
-
-            <!-- Category description will be added here using JavaScript -->
-
+            <!-- Category description -->
         </div>
 
     </section>
 
 
-    <!-- MEALS -->
+
+    <!-- =========================
+         MEALS
+    ========================= -->
 
     <section class="meals-section">
 
-        <h2>Meals</h2>
+        <h2>
+            Meals
+        </h2>
+
 
         <div id="meals-container">
-
-            <!-- Meals will be added here using JavaScript -->
-
+            <!-- Meals added using JavaScript -->
         </div>
 
     </section>
+
+
+
+    <!-- =========================
+         MEAL DETAILS
+    ========================= -->
+
     <section class="details-section">
 
-    <div id="details-container">
+        <div class="meal-breadcrumb">
 
-        <!-- Meal details will be added here using JavaScript -->
+            <span>
+                🏠
+            </span>
 
-    </div>
+            <span>
+                »
+            </span>
 
-</section>
+            <span id="breadcrumb-meal">
+                MEAL DETAILS
+            </span>
+
+        </div>
+
+
+        <h2 class="details-heading">
+            MEAL DETAILS
+        </h2>
+
+
+        <div id="details-container">
+            <!-- Meal details added using JavaScript -->
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CATEGORIES
+    ========================= -->
+
+    <section class="categories-section">
+
+        <h2>
+            Categories
+        </h2>
+
+
+        <div id="categories-container">
+            <!-- Categories added using JavaScript -->
+        </div>
+
+    </section>
+
 
 
     <script src="script.js"></script>
